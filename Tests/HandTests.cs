@@ -81,5 +81,61 @@ namespace PokerhandRanker.Tests
 
             hand.GetHandRank().Should().Be(HandRank.RoyalFlush);
         }
+
+        [Fact]
+        public void CanScorePair()
+        {
+            Hand hand = new Hand();
+
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Clubs));
+            hand.Draw(new Card(CardValue.Jack, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Nine, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Hearts));
+            hand.Draw(new Card(CardValue.Ace, CardSuit.Spades));
+
+            hand.GetHandRank().Should().Be(HandRank.Pair);
+        }
+
+        [Fact]
+        public void CanScoreThreeOfAKind()
+        {
+            Hand hand = new Hand();
+
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Clubs));
+            hand.Draw(new Card(CardValue.Jack, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Nine, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Hearts));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
+
+            hand.GetHandRank().Should().Be(HandRank.ThreeOfAKind);
+        }
+
+        [Fact]
+        public void CanScoreFourOfAKind()
+        {
+            Hand hand = new Hand();
+
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Clubs));
+            hand.Draw(new Card(CardValue.Jack, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Hearts));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
+
+            hand.GetHandRank().Should().Be(HandRank.FourOfAKind);
+        }
+
+        [Fact]
+        public void CanScoreFullHouse()
+        {
+            Hand hand = new Hand();
+
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Clubs));
+            hand.Draw(new Card(CardValue.Jack, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Jack, CardSuit.Hearts));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
+
+            hand.GetHandRank().Should().Be(HandRank.FullHouse);
+        }
     }
 }
