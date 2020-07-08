@@ -5,10 +5,12 @@ namespace PokerhandRanker.Tests
     public class CardTests
     {
         [Fact]
-        public void CanCreateCard()
+        public void CanCreateCardWithValue()
         {
-            object card = new Card();
-            Assert.NotNull(card);
+            Card card = new Card(CardValue.Queen, CardSuit.Hearts);
+
+            Assert.Equal(CardSuit.Hearts, card.Suit);
+            Assert.Equal(CardValue.Queen, card.Value);
         }
     }
 }
