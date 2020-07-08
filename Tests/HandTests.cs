@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System.Linq;
+
+using Xunit;
 
 namespace PokerhandRanker.Tests
 {
