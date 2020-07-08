@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokerhandRanker", "PokerhandRanker.csproj", "{D1EA3981-FF0C-4723-B391-0FBA0138F655}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1EA3981-FF0C-4723-B391-0FBA0138F655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EA3981-FF0C-4723-B391-0FBA0138F655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EA3981-FF0C-4723-B391-0FBA0138F655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EA3981-FF0C-4723-B391-0FBA0138F655}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {878B5FC0-277A-4096-BCDE-B4A4B138AC07}
+	EndGlobalSection
+EndGlobal
