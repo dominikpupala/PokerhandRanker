@@ -1,4 +1,5 @@
 ﻿using Xunit;
+using FluentAssertions;
 
 namespace PokerhandRanker.Tests
 {
@@ -9,8 +10,8 @@ namespace PokerhandRanker.Tests
         {
             Card card = new Card(CardValue.Queen, CardSuit.Hearts);
 
-            Assert.Equal(CardSuit.Hearts, card.Suit);
-            Assert.Equal(CardValue.Queen, card.Value);
+            card.Suit.Should().Be(CardSuit.Hearts);
+            card.Value.Should().Be(CardValue.Queen);
         }
 
         [Fact]
@@ -18,7 +19,7 @@ namespace PokerhandRanker.Tests
         {
             Card card = new Card(CardValue.Queen, CardSuit.Hearts);
 
-            Assert.Equal("Queen of Hearts", card.ToString());
+            card.ToString().Should().Be("Queen of Hearts");
         }
     }
 }

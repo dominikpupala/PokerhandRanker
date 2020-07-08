@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 
 using Xunit;
+using FluentAssertions;
 
 namespace PokerhandRanker.Tests
 {
@@ -11,7 +12,7 @@ namespace PokerhandRanker.Tests
         {
             Hand hand = new Hand();
 
-            Assert.False(hand.Cards.Any());
+            hand.Cards.Any().Should().BeFalse();
         }
 
         [Fact]
@@ -22,7 +23,7 @@ namespace PokerhandRanker.Tests
 
             hand.Draw(card);
 
-            Assert.Equal(hand.Cards.First(), card);
+            hand.Cards.First().Should().Be(card);
         }
 
         [Fact]
@@ -36,7 +37,7 @@ namespace PokerhandRanker.Tests
             hand.Draw(new Card(CardValue.King, CardSuit.Hearts));
             hand.Draw(new Card(CardValue.Two, CardSuit.Hearts));
 
-            Assert.Equal(CardValue.King, hand.HighCard());
+            hand.HighCard().Value.Should().Be(CardValue.King);
         }
 
         [Fact]
@@ -50,7 +51,7 @@ namespace PokerhandRanker.Tests
             hand.Draw(new Card(CardValue.King, CardSuit.Hearts));
             hand.Draw(new Card(CardValue.Two, CardSuit.Hearts));
 
-            Assert.Equal(HandRank.HighCard, hand.GetHandRank());
+            hand.GetHandRank().Should().Be(HandRank.HighCard);
         }
 
         [Fact]
@@ -64,8 +65,9 @@ namespace PokerhandRanker.Tests
             hand.Draw(new Card(CardValue.Five, CardSuit.Spades));
             hand.Draw(new Card(CardValue.Six, CardSuit.Spades));
 
-            Assert.Equal(HandRank.Flush, hand.GetHandRank());
+            hand.GetHandRank().Should().Be(HandRank.Flush);
         }
+
         [Fact]
         public void CanScoreRoyalFlush()
         {
@@ -77,7 +79,7 @@ namespace PokerhandRanker.Tests
             hand.Draw(new Card(CardValue.King, CardSuit.Spades));
             hand.Draw(new Card(CardValue.Ace, CardSuit.Spades));
 
-            Assert.Equal(HandRank.RoyalFlush, hand.GetHandRank());
+            hand.GetHandRank().Should().Be(HandRank.RoyalFlush);
         }
     }
 }
