@@ -13,9 +13,9 @@ namespace PokerhandRanker
 
         public HandRank GetHandRank() =>
             HasRoyalFlush() ? HandRank.RoyalFlush :
-            HasFlush() ? HandRank.Flush :
             HasFourOfKind() ? HandRank.FourOfAKind :
             HasFullHouse() ? HandRank.FullHouse :
+            HasFlush() ? HandRank.Flush :
             HasThreeOfKind() ? HandRank.ThreeOfAKind :
             HasPair() ? HandRank.Pair : HandRank.HighCard;
 
