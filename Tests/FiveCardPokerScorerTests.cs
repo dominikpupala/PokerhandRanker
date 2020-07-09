@@ -147,5 +147,33 @@ namespace PokerhandRanker.Tests
 
             FiveCardPokerScorer.GetHandRank(hand.Cards).Should().Be(HandRank.Straight);
         }
+        
+        [Fact]
+        public void CanScoreStraightFlush()
+        {
+            Hand hand = new Hand();
+
+            hand.Draw(new Card(CardValue.Nine, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Queen, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Jack, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.King, CardSuit.Spades));
+
+            FiveCardPokerScorer.GetHandRank(hand.Cards).Should().Be(HandRank.StraightFlush);
+        }
+
+        [Fact]
+        public void CanScoreTwoPair()
+        {
+            Hand hand = new Hand();
+
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Clubs));
+            hand.Draw(new Card(CardValue.Ace, CardSuit.Hearts));
+            hand.Draw(new Card(CardValue.Nine, CardSuit.Spades));
+            hand.Draw(new Card(CardValue.Ten, CardSuit.Hearts));
+            hand.Draw(new Card(CardValue.Ace, CardSuit.Spades));
+
+            FiveCardPokerScorer.GetHandRank(hand.Cards).Should().Be(HandRank.TwoPair);
+        }
     }
 }
