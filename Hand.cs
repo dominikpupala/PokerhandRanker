@@ -16,12 +16,15 @@ namespace PokerhandRanker
             HasFourOfKind() ? HandRank.FourOfAKind :
             HasFullHouse() ? HandRank.FullHouse :
             HasFlush() ? HandRank.Flush :
+            HasStraight() ? HandRank.Straight :
             HasThreeOfKind() ? HandRank.ThreeOfAKind :
             HasPair() ? HandRank.Pair : HandRank.HighCard;
 
         private bool HasRoyalFlush() => HasFlush() && Cards.All(x => x.Value > CardValue.Nine);
 
         private bool HasFlush() => Cards.All(x => Cards.First().Suit == x.Suit);
+
+        private bool HasStraight() => Cards.OrderByDescending(x => x.Value).SelectConsecutive((x, y) => x.Value == y.Value + 1).All(v => v);
 
         private bool HasFullHouse() => HasThreeOfKind() && HasPair();
 
